@@ -1,0 +1,524 @@
+/* ================================
+   DEBUG IT SERVICE - Custom Styles
+   ================================ */
+
+:root {
+    --primary-color: #dc3545;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --border-radius: 0.5rem;
+    --transition: all 0.3s ease;
+}
+
+/* ================================
+   General Styles
+   ================================ */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--light-color);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================================
+   Navigation
+   ================================ */
+
+.navbar {
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.navbar-brand:hover {
+    color: var(--primary-color) !important;
+}
+
+.nav-link {
+    margin: 0 0.5rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Logo Styles */
+.navbar-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+    filter: brightness(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    mix-blend-mode: screen;
+    display: block;
+}
+
+.navbar-logo:hover {
+    filter: brightness(1.15) drop-shadow(0 4px 8px rgba(220, 53, 69, 0.4));
+    transform: scale(1.03);
+}
+
+.footer-logo {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+    filter: brightness(1.2) drop-shadow(0 2px 4px rgba(220, 53, 69, 0.5));
+    display: block;
+}
+
+.footer-logo:hover {
+    filter: brightness(1.35) drop-shadow(0 4px 8px rgba(220, 53, 69, 0.6));
+    transform: scale(1.02);
+}
+
+/* ================================
+   Hero Section
+   ================================ */
+
+.hero-section {
+    background: linear-gradient(135deg, #212529 0%, #343a40 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(220, 53, 69, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+}
+
+.hero-section h1 {
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+/* Hero Logo Animation */
+.hero-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    animation: logoFloat 3.5s ease-in-out infinite;
+    filter: brightness(1.02) drop-shadow(0 15px 40px rgba(220, 53, 69, 0.25)) drop-shadow(0 0 20px rgba(220, 53, 69, 0.15));
+    mix-blend-mode: screen;
+    transition: var(--transition);
+}
+
+.hero-logo:hover {
+    filter: brightness(1.08) drop-shadow(0 20px 50px rgba(220, 53, 69, 0.35)) drop-shadow(0 0 30px rgba(220, 53, 69, 0.25));
+    animation-play-state: paused;
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* ================================
+   Cards & Components
+   ================================ */
+
+.card {
+    transition: var(--transition);
+    border-radius: var(--border-radius);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(220, 53, 69, 0.2) !important;
+}
+
+.service-card {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-card {
+    overflow: hidden;
+}
+
+.portfolio-card img {
+    transition: var(--transition);
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.05);
+}
+
+.blog-card {
+    overflow: hidden;
+}
+
+.blog-card img {
+    transition: var(--transition);
+}
+
+.blog-card:hover img {
+    transform: scale(1.05);
+}
+
+/* ================================
+   Buttons
+   ================================ */
+
+.btn-danger {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-danger:hover {
+    background-color: #bd2130;
+    border-color: #bd2130;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+.btn-outline-danger {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-sm {
+    font-weight: 600;
+}
+
+/* ================================
+   Headings
+   ================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.display-4, .display-5 {
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+/* ================================
+   Sections
+   ================================ */
+
+section {
+    position: relative;
+}
+
+.bg-light {
+    background-color: #f5f7fa !important;
+}
+
+/* ================================
+   Services Section
+   ================================ */
+
+.service-card:hover {
+    border: 1px solid var(--primary-color) !important;
+}
+
+.service-detail-card {
+    border-left: 4px solid var(--primary-color) !important;
+}
+
+/* ================================
+   Footer
+   ================================ */
+
+footer {
+    background-color: #1a1d1f !important;
+    border-top: 2px solid var(--primary-color);
+    margin-top: auto;
+}
+
+footer h5 {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+footer .text-muted {
+    color: #b0b8c1 !important;
+}
+
+footer a {
+    transition: var(--transition);
+    color: #b0b8c1 !important;
+}
+
+footer a:hover {
+    color: var(--primary-color) !important;
+}
+
+footer .text-muted:hover {
+    color: var(--primary-color) !important;
+}
+
+/* ================================
+   Forms
+   ================================ */
+
+.form-control {
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* ================================
+   Blog Styling
+   ================================ */
+
+.blog-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.blog-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.blog-content ul,
+.blog-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.blog-content li {
+    margin-bottom: 0.5rem;
+}
+
+.blog-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #666;
+}
+
+.blog-content code {
+    background-color: #f5f7fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.blog-content pre {
+    background-color: #f5f7fa;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+}
+
+/* ================================
+   Utilities
+   ================================ */
+
+.text-danger {
+    color: var(--primary-color) !important;
+}
+
+.bg-danger {
+    background-color: var(--primary-color) !important;
+}
+
+.badge {
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .display-5 {
+        font-size: 1.75rem;
+    }
+
+    .hero-section {
+        min-height: 400px !important;
+    }
+
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin-top: 0.5rem;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .service-card {
+        min-height: auto;
+    }
+}
+
+/* ================================
+   Animations
+   ================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ================================
+   Scrollbar Styling
+   ================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bd2130;
+}
+
+/* ================================
+   Partner Card Styles
+   ================================ */
+
+.partner-card {
+    transition: var(--transition);
+    border: 1px solid #e0e0e0;
+}
+
+.partner-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(220, 53, 69, 0.15) !important;
+    border-color: var(--primary-color);
+}
+
+.partner-card .card-body {
+    padding: 2rem !important;
+}
+
+.partner-card .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+}
+
+/* ================================
+   Print Styles
+   ================================ */
+
+@media print {
+    .navbar, footer, .btn, .pagination {
+        display: none;
+    }
+
+    body {
+        color: #000;
+    }
+
+    a {
+        color: #000;
+    }
+}

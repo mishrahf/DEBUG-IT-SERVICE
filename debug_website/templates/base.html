@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DEBUG IT SERVICE - Software & AI Solutions{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-lg">
+            <a class="navbar-brand" href="{% url 'home:home' %}">
+                {% load static %}
+                <img src="{% static 'images/logo.png' %}" alt="DEBUG IT SERVICE Logo" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'services:list' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio:list' %}">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:list' %}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:partners' %}">Partners</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:contact' %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-dark text-danger mt-5 py-5">
+        <div class="container-lg">
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="mb-3">
+                        {% load static %}
+                        <img src="{% static 'images/logo.png' %}" alt="DEBUG IT SERVICE Logo" class="footer-logo">
+                    </div>
+                    <p>
+                        Transforming ideas into intelligent software solutions. Specializing in SaaS and AI agentic projects.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'home:about' %}" >About Us</a></li>
+                        <li><a href="{% url 'services:list' %}" >Services</a></li>
+                        <li><a href="{% url 'portfolio:list' %}" >Portfolio</a></li>
+                        <li><a href="{% url 'home:partners' %}" >Partners</a></li>
+                        <li><a href="{% url 'home:contact' %}" >Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Contact Info</h5>
+                    <p>
+                        <i class="fas fa-envelope me-2"></i> info@debugitservice.com<br>
+                        <i class="fas fa-phone me-2"></i> +91-8923082117<br>
+                        <i class="fas fa-map-marker-alt me-2"></i> Sanjay Palace Agra Uttar Pradesh 282002, India
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2026 DEBUG IT SERVICE. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-muted text-decoration-none me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-muted text-decoration-none me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-muted text-decoration-none"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

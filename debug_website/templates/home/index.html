@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - DEBUG IT SERVICE{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-dark text-white py-5" style="min-height: 600px; display: flex; align-items: center;">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3">
+                    Transform Your Ideas into <span class="text-danger">Intelligent Solutions</span>
+                </h1>
+                <p class="lead mb-4 text-light">
+                    We specialize in building cutting-edge SaaS platforms and AI agentic applications that drive business growth and innovation.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="{% url 'home:contact' %}" class="btn btn-danger btn-lg">Get Started</a>
+                    <a href="{% url 'home:about' %}" class="btn btn-outline-light btn-lg">Learn More</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    {% load static %}
+                    <img src="{% static 'images/logo.png' %}" alt="DEBUG IT SERVICE" class="hero-logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Our Services</h2>
+            <p class="lead text-muted">Comprehensive solutions for your digital transformation</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-cloud text-danger mb-3" style="font-size: 40px;"></i>
+                        <h5 class="card-title">SaaS Development</h5>
+                        <p class="card-text text-muted">
+                            Build scalable, secure, and user-friendly SaaS applications tailored to your business needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-robot text-danger mb-3" style="font-size: 40px;"></i>
+                        <h5 class="card-title">AI Agentic Systems</h5>
+                        <p class="card-text text-muted">
+                            Develop intelligent autonomous agents that automate complex processes and enhance decision-making.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-danger mb-3" style="font-size: 40px;"></i>
+                        <h5 class="card-title">Web & Mobile Apps</h5>
+                        <p class="card-text text-muted">
+                            Create stunning, responsive applications for web and mobile platforms using modern technologies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-brain text-danger mb-3" style="font-size: 40px;"></i>
+                        <h5 class="card-title">Machine Learning</h5>
+                        <p class="card-text text-muted">
+                            Integrate advanced ML models to unlock data insights and predict future trends.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-shield-alt text-danger mb-3" style="font-size: 40px;"></i>
+                        <h5 class="card-title">Cybersecurity</h5>
+                        <p class="card-text text-muted">
+                            Protect your applications and data with comprehensive security solutions and best practices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-cogs text-danger mb-3" style="font-size: 40px;"></i>
+                        <h5 class="card-title">DevOps & Deployment</h5>
+                        <p class="card-text text-muted">
+                            Streamline your development pipeline with modern DevOps practices and cloud deployment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'services:list' %}" class="btn btn-danger btn-lg">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="py-5">
+    <div class="container-lg">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Featured Projects</h2>
+            <p class="lead text-muted">Check out some of our recent work</p>
+        </div>
+        {% if projects %}
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm project-card">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image text-white" style="font-size: 40px;"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text text-muted">{{ project.short_description|truncatewords:15 }}</p>
+                        <small class="text-muted"><strong>Client:</strong> {{ project.client }}</small><br>
+                        <small class="text-muted"><strong>Technologies:</strong> {{ project.technologies }}</small>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="{% url 'portfolio:detail' project.id %}" class="btn btn-sm btn-outline-danger">View Project</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info">No featured projects available yet.</div>
+        {% endif %}
+        <div class="text-center mt-5">
+            <a href="{% url 'portfolio:list' %}" class="btn btn-danger btn-lg">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Why Choose DEBUG IT SERVICE?</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-danger" style="font-size: 30px;"></i>
+                    </div>
+                    <div>
+                        <h5>Expert Team</h5>
+                        <p class="text-muted">Experienced developers proficient in latest technologies and best practices.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-danger" style="font-size: 30px;"></i>
+                    </div>
+                    <div>
+                        <h5>Custom Solutions</h5>
+                        <p class="text-muted">Tailored solutions designed to meet your specific business requirements and goals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-danger" style="font-size: 30px;"></i>
+                    </div>
+                    <div>
+                        <h5>Agile Approach</h5>
+                        <p class="text-muted">Flexible and iterative development process ensuring timely delivery and quality.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-danger" style="font-size: 30px;"></i>
+                    </div>
+                    <div>
+                        <h5>24/7 Support</h5>
+                        <p class="text-muted">Dedicated support team available round the clock to assist and resolve issues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+{% if testimonials %}
+<section class="py-5">
+    <div class="container-lg">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">What Our Clients Say</h2>
+        </div>
+        <div class="row g-4">
+            {% for testimonial in testimonials %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            {% for i in "12345" %}
+                                {% if i|add:0 <= testimonial.rating %}
+                                <i class="fas fa-star text-warning"></i>
+                                {% else %}
+                                <i class="far fa-star text-warning"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <p class="card-text">{{ testimonial.message }}</p>
+                        <div class="d-flex align-items-center gap-2 mt-3">
+                            {% if testimonial.image %}
+                            <img src="{{ testimonial.image.url }}" alt="{{ testimonial.client_name }}" class="rounded-circle" width="40" height="40">
+                            {% else %}
+                            <i class="fas fa-user-circle text-muted" style="font-size: 40px;"></i>
+                            {% endif %}
+                            <div>
+                                <strong>{{ testimonial.client_name }}</strong><br>
+                                <small class="text-muted">{{ testimonial.company }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Partners Section -->
+{% if partners %}
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-2">Our Partners</h2>
+            <p class="lead text-muted">Trusted Technology & Business Partners</p>
+        </div>
+        
+        <div class="row g-4 align-items-center">
+            {% for partner in partners %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100 text-center partner-card">
+                    <div class="card-body">
+                        {% if partner.logo %}
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="mb-3" style="max-height: 80px; object-fit: contain;">
+                        {% else %}
+                        <div class="mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-handshake text-danger" style="font-size: 50px;"></i>
+                        </div>
+                        {% endif %}
+                        
+                        <h5 class="card-title">{{ partner.name }}</h5>
+                        <p class="badge bg-danger mb-2">{{ partner.get_partner_type_display }}</p>
+                        <p class="card-text text-muted small">{{ partner.description|truncatewords:25 }}</p>
+                        
+                        {% if partner.website %}
+                        <a href="{{ partner.website }}" target="_blank" class="btn btn-sm btn-outline-danger">Visit Website</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA Section -->
+<section class="bg-danger text-white py-5">
+    <div class="container-lg text-center">
+        <h2 class="display-5 fw-bold mb-3">Ready to Get Started?</h2>
+        <p class="lead mb-4">Let's discuss how we can help transform your business with intelligent solutions.</p>
+        <a href="{% url 'home:contact' %}" class="btn btn-light btn-lg">Contact Us Today</a>
+    </div>
+</section>
+
+{% endblock %}

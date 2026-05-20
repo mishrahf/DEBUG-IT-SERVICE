@@ -1,0 +1,195 @@
+{% extends 'base.html' %}{% load portfolio_tags %}
+{% block title %}{{ project.title }} - DEBUG IT SERVICE{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="bg-light py-3">
+    <div class="container-lg">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'portfolio:list' %}">Portfolio</a></li>
+            <li class="breadcrumb-item active">{{ project.title }}</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- Project Header -->
+<section class="py-5 bg-dark text-white">
+    <div class="container-lg">
+        <h1 class="display-4 fw-bold mb-3">{{ project.title }}</h1>
+        <div class="row g-4">
+            <div class="col-auto">
+                <small class="d-block text-light mb-2"><strong>Client:</strong> {{ project.client }}</small>
+            </div>
+            <div class="col-auto">
+                <small class="d-block text-light mb-2"><strong>Status:</strong> 
+                    {% if project.status == 'completed' %}
+                    <span class="badge bg-success">Completed</span>
+                    {% else %}
+                    <span class="badge bg-warning">In Progress</span>
+                    {% endif %}
+                </small>
+            </div>
+            <div class="col-auto">
+                <small class="d-block text-light mb-2"><strong>Date:</strong> {{ project.created_at|date:"F, Y" }}</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Image -->
+{% if project.image %}
+<section class="py-5">
+    <div class="container-lg">
+        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid rounded shadow">
+    </div>
+</section>
+{% endif %}
+
+<!-- Project Details -->
+<section class="py-5">
+    <div class="container-lg">
+        <div class="row gap-5">
+            <div class="col-lg-8">
+                <h3 class="mb-4">Project Overview</h3>
+                <p class="lead mb-4">{{ project.description }}</p>
+
+                <h5 class="mb-3">Project Summary</h5>
+                <p>{{ project.short_description }}</p>
+
+                {% if project.project_url %}
+                <div class="mt-5">
+                    <a href="{{ project.project_url }}" target="_blank" class="btn btn-danger btn-lg">
+                        View Live Project <i class="fas fa-external-link-alt ms-2"></i>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Project Info Sidebar -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Details</h5>
+                        <hr>
+                        <p class="mb-3">
+                            <strong>Client:</strong><br>
+                            {{ project.client }}
+                        </p>
+                        <p class="mb-3">
+                            <strong>Status:</strong><br>
+                            {% if project.status == 'completed' %}
+                            <span class="badge bg-success">Completed</span>
+                            {% else %}
+                            <span class="badge bg-warning">In Progress</span>
+                            {% endif %}
+                        </p>
+                        <p class="mb-3">
+                            <strong>Date:</strong><br>
+                            {{ project.created_at|date:"F d, Y" }}
+                        </p>
+                    </div>
+                </div>
+
+                {% if project.technologies %}
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Technologies Used</h5>
+                        <hr>
+                        <div class="d-flex flex-wrap gap-2">
+                            {% for tech in project.technologies|split:"," %}
+                            <span class="badge bg-danger">{{ tech|strip }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features/Highlights -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <h3 class="mb-4">Key Features & Highlights</h3>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div><i class="fas fa-rocket text-danger" style="font-size: 24px;"></i></div>
+                    <div>
+                        <h6>High Performance</h6>
+                        <p class="text-muted mb-0">Optimized for speed and efficiency across all devices and platforms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div><i class="fas fa-lock text-danger" style="font-size: 24px;"></i></div>
+                    <div>
+                        <h6>Secure & Reliable</h6>
+                        <p class="text-muted mb-0">Enterprise-grade security and 99.9% uptime guarantee.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div><i class="fas fa-chart-line text-danger" style="font-size: 24px;"></i></div>
+                    <div>
+                        <h6>Scalable Architecture</h6>
+                        <p class="text-muted mb-0">Built to scale with your growing business needs and user base.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div><i class="fas fa-users text-danger" style="font-size: 24px;"></i></div>
+                    <div>
+                        <h6>User-Friendly Interface</h6>
+                        <p class="text-muted mb-0">Intuitive design focused on exceptional user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Projects -->
+<section class="py-5">
+    <div class="container-lg">
+        <h3 class="mb-4">Related Projects</h3>
+        <div class="row g-4">
+            {% for related_project in projects|slice:":3" %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    {% if related_project.image %}
+                    <img src="{{ related_project.image.url }}" class="card-img-top" alt="{{ related_project.title }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image text-white" style="font-size: 40px;"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ related_project.title }}</h5>
+                        <p class="card-text text-muted">{{ related_project.short_description|truncatewords:15 }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="{% url 'portfolio:detail' related_project.id %}" class="btn btn-sm btn-danger">View Project</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-danger text-white py-5">
+    <div class="container-lg text-center">
+        <h2 class="display-5 fw-bold mb-3">Ready to Build Your Project?</h2>
+        <p class="lead mb-4">Let's create something amazing together. Contact us today to discuss your requirements.</p>
+        <a href="{% url 'home:contact' %}" class="btn btn-light btn-lg">Contact Us</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Partners - DEBUG IT SERVICE{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-dark text-white py-5">
+    <div class="container-lg">
+        <h1 class="display-4 fw-bold mb-2">Our Partners</h1>
+        <p class="lead text-light">Technology and business partnerships that power our solutions</p>
+    </div>
+</section>
+
+<!-- Partners Content -->
+<section class="py-5">
+    <div class="container-lg">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="mb-4">Strategic Technology Partners</h2>
+                <p class="lead text-muted">
+                    We collaborate with industry-leading companies and innovative AI solutions to deliver cutting-edge services. 
+                    Our partnerships enable us to offer the best technologies and practices to our clients.
+                </p>
+            </div>
+        </div>
+
+        {% if ai_partners %}
+        <!-- AI Partners -->
+        <div class="mb-5">
+            <h3 class="mb-4 text-danger">
+                <i class="fas fa-robot me-2"></i>AI Technology Partners
+            </h3>
+            <div class="row g-4">
+                {% for partner in ai_partners %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 partner-card">
+                        <div class="card-body text-center">
+                            {% if partner.logo %}
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="mb-3" style="max-height: 100px; object-fit: contain;">
+                            {% else %}
+                            <div class="mb-3" style="height: 100px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-robot text-danger" style="font-size: 60px;"></i>
+                            </div>
+                            {% endif %}
+                            <h5 class="card-title">{{ partner.name }}</h5>
+                            <p class="card-text text-muted">{{ partner.description }}</p>
+                            {% if partner.website %}
+                            <a href="{{ partner.website }}" target="_blank" class="btn btn-sm btn-danger">Visit Partner</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if it_partners %}
+        <!-- IT Partners -->
+        <div class="mb-5">
+            <h3 class="mb-4 text-danger">
+                <i class="fas fa-server me-2"></i>IT Solution Partners
+            </h3>
+            <div class="row g-4">
+                {% for partner in it_partners %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 partner-card">
+                        <div class="card-body text-center">
+                            {% if partner.logo %}
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="mb-3" style="max-height: 100px; object-fit: contain;">
+                            {% else %}
+                            <div class="mb-3" style="height: 100px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-server text-danger" style="font-size: 60px;"></i>
+                            </div>
+                            {% endif %}
+                            <h5 class="card-title">{{ partner.name }}</h5>
+                            <p class="card-text text-muted">{{ partner.description }}</p>
+                            {% if partner.website %}
+                            <a href="{{ partner.website }}" target="_blank" class="btn btn-sm btn-danger">Visit Partner</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if cloud_partners %}
+        <!-- Cloud Partners -->
+        <div class="mb-5">
+            <h3 class="mb-4 text-danger">
+                <i class="fas fa-cloud me-2"></i>Cloud Platform Partners
+            </h3>
+            <div class="row g-4">
+                {% for partner in cloud_partners %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 partner-card">
+                        <div class="card-body text-center">
+                            {% if partner.logo %}
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="mb-3" style="max-height: 100px; object-fit: contain;">
+                            {% else %}
+                            <div class="mb-3" style="height: 100px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-cloud text-danger" style="font-size: 60px;"></i>
+                            </div>
+                            {% endif %}
+                            <h5 class="card-title">{{ partner.name }}</h5>
+                            <p class="card-text text-muted">{{ partner.description }}</p>
+                            {% if partner.website %}
+                            <a href="{{ partner.website }}" target="_blank" class="btn btn-sm btn-danger">Visit Partner</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if infra_partners %}
+        <!-- Infrastructure Partners -->
+        <div class="mb-5">
+            <h3 class="mb-4 text-danger">
+                <i class="fas fa-building me-2"></i>Infrastructure Partners
+            </h3>
+            <div class="row g-4">
+                {% for partner in infra_partners %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 partner-card">
+                        <div class="card-body text-center">
+                            {% if partner.logo %}
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="mb-3" style="max-height: 100px; object-fit: contain;">
+                            {% else %}
+                            <div class="mb-3" style="height: 100px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-building text-danger" style="font-size: 60px;"></i>
+                            </div>
+                            {% endif %}
+                            <h5 class="card-title">{{ partner.name }}</h5>
+                            <p class="card-text text-muted">{{ partner.description }}</p>
+                            {% if partner.website %}
+                            <a href="{{ partner.website }}" target="_blank" class="btn btn-sm btn-danger">Visit Partner</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Partnership Benefits -->
+<section class="bg-light py-5">
+    <div class="container-lg">
+        <h2 class="text-center mb-5">Why Partner With Us?</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <i class="fas fa-check-circle text-danger mb-3" style="font-size: 50px;"></i>
+                    <h5>Expert Knowledge</h5>
+                    <p class="text-muted">Deep expertise in cutting-edge technologies and best practices</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <i class="fas fa-handshake text-danger mb-3" style="font-size: 50px;"></i>
+                    <h5>Strategic Collaboration</h5>
+                    <p class="text-muted">Long-term partnerships focused on mutual growth and success</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <i class="fas fa-rocket text-danger mb-3" style="font-size: 50px;"></i>
+                    <h5>Innovation First</h5>
+                    <p class="text-muted">Commitment to innovation and latest technology adoption</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <i class="fas fa-star text-danger mb-3" style="font-size: 50px;"></i>
+                    <h5>Quality Assured</h5>
+                    <p class="text-muted">Stringent quality standards and proven track record</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-danger text-white py-5">
+    <div class="container-lg text-center">
+        <h2 class="display-5 fw-bold mb-3">Interested in Partnership?</h2>
+        <p class="lead mb-4">Let's explore how we can collaborate and create innovative solutions together.</p>
+        <a href="{% url 'home:contact' %}" class="btn btn-light btn-lg">Get in Touch</a>
+    </div>
+</section>
+
+{% endblock %}

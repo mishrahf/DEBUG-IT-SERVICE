@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - DEBUG IT SERVICE{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-dark text-white py-5">
+    <div class="container-lg">
+        <h1 class="display-4 fw-bold mb-2">Contact Us</h1>
+        <p class="lead text-light">Get in touch with our team to discuss your project</p>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="py-5">
+    <div class="container-lg">
+        {% if success %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> Your message has been sent. We'll get back to you soon.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endif %}
+
+        <div class="row g-5">
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <h3 class="mb-4">Send us a Message</h3>
+                <form method="post" class="needs-validation">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name *</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject *</label>
+                        <input type="text" class="form-control" id="subject" name="subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message *</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-lg">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-map-marker-alt text-danger me-2"></i>Address
+                        </h5>
+                        <p class="card-text">
+                            <br>Sanjay Palace</br>
+                            <br>Agra, Uttar Pradesh 282002</br>
+                            <br>India</br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-phone text-danger me-2"></i>Phone
+                        </h5>
+                        <p class="card-text">
+                            <a href="tel:+918923082117" class="text-decoration-none">+91-8923082117</a><br>
+                            Business Hours: Mon-Fri 10AM-6PM IST
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-envelope text-danger me-2"></i>Email
+                        </h5>
+                        <p class="card-text">
+                            <a href="mailto:info@debugitservice.com" class="text-decoration-none">info@debugitservice.com</a><br>
+                            <a href="mailto:hr@debugitservice.com" class="text-decoration-none">hr@debugitservice.com</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-clock text-danger me-2"></i>Business Hours
+                        </h5>
+                        <p class="card-text">
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: Closed<br>
+                            Sunday: Closed
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="mt-4">
+                    <h5 class="mb-3">Connect With Us</h5>
+                    <a href="#" class="btn btn-outline-danger btn-sm me-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="btn btn-outline-danger btn-sm me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn btn-outline-danger btn-sm me-2"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="btn btn-outline-danger btn-sm"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section (Optional) -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <h3 class="mb-4 text-center">Find Us on Map</h3>
+        <div class="ratio ratio-16x9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2999.5790846528025!2d78.00485227714685!3d27.199538267060355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397477465299446b%3A0xac5ba75085a0a0cf!2sSanjay%20Palace%2C%20Sanjay%20Place%2C%20Civil%20Lines%2C%20Agra%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1779255689140!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
