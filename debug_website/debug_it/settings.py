@@ -59,6 +59,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'debug_it.wsgi.application'
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://debugitservice.com",
+    "https://www.debugitservice.com"
+]
+
 # Database
 DATABASES = {
     'default': {
