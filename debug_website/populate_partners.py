@@ -13,7 +13,7 @@ from home.models import Partner
 PARTNERS_DATA = [
     {
         "name": "Claude (Anthropic)",
-        "partner_type": "ai",
+        "partner_type": "AI",
         "description": "Advanced AI assistant powered by Anthropic's Claude. We use Claude's capabilities for intelligent automation, natural language processing, and AI-powered features in our applications.",
         "website": "https://www.anthropic.com",
         "featured": True,
@@ -21,7 +21,7 @@ PARTNERS_DATA = [
     },
     {
         "name": "GitHub Copilot",
-        "partner_type": "ai",
+        "partner_type": "AI",
         "description": "AI-powered code completion and programming assistant. Integrated into our development workflow to accelerate coding, improve code quality, and enhance developer productivity.",
         "website": "https://github.com/features/copilot",
         "featured": True,
@@ -29,17 +29,17 @@ PARTNERS_DATA = [
     },
     {
         "name": "Espire Infolabs",
-        "partner_type": "it",
+        "partner_type": "IT",
         "description": "Leading IT solutions and consulting partner. Collaboration for enterprise-level software development, cloud solutions, and digital transformation initiatives.",
         "website": "https://espire.in",
         "featured": True,
         "order": 3
     },
     {
-        "name": "Windserv",
-        "partner_type": "cloud",
-        "description": "Cloud infrastructure and platform services partner. Supporting our platform with reliable cloud hosting, scalability, and infrastructure management solutions.",
-        "website": "https://windserv.com",
+        "name": "Windsurf",
+        "partner_type": "AI",
+        "description": "Windsurf is the first agentic AI-powered code editor, created by Codeium. Built as a fork of VS Code, it functions as a collaborative partner rather than just a chatbot.",
+        "website": "https://windsurf.com",
         "featured": True,
         "order": 4
     },
