@@ -1,7 +1,7 @@
 """
 Django settings for debug_it project.
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
